@@ -42,13 +42,13 @@ for this endpoint `https://support.quoccabank.com/raw/RVnSH2uR` aka `raw/1125:4`
 
 similarly `https://support.quoccabank.com/raw/VVBWU75i` aka `raw/9447:1` 
 
-![image-20210709200651795](C:\Users\Jacky\Documents\unsw\6843\project1\images\support2.png)
+![image-20210709200651795](./images/support2.png)
 
 ## Steps to reproduce 
 
 You can either run the brute forcing script to find out other users ids, pages or you can just pipe the above input into [Cyberchef](https://gchq.github.io/CyberChef/) as shown in the figure below, then paste it into 'https://support.quoccabank.com/raw/{base58(input)}' and there will be information leakage.
 
-![image-20210709200812817](C:\Users\Jacky\Documents\unsw\6843\project1\images\support3.png)
+![image-20210709200812817](./images/support3.png)
 
  ## Recommendations 
 
