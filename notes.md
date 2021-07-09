@@ -1,12 +1,10 @@
 # Unverified  JWT token on 'notes.quoccabank.com' leads to vertical privilege escalation
 
+## Severity: High
+
 ## Report summary:
 
 The 'https://notes.quoccabank.com/' endpoint utilized a JWT token as its primary authentication token. Within this token includes two key value pair fields in its payload: Username and Expiry. Upon modifying the username to admin@quoccabank.com and the expiry time to a valid expiry time in the future, then submitting it to the website 'notes.quoccabank.com' response with text showing the user has been authenticated as admin.
-
-## Severity: High
-
-
 
 ## Steps to reproduce:
 

