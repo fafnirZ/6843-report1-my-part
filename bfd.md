@@ -1,10 +1,10 @@
-# Local file inclusion on 'bdf.quoccabank.com' 
+# Local file inclusion on 'bfd.quoccabank.com' 
 
 ## Report summary:
 
-Local file inclusion on the root endpoint 'https://bfd.quoccabank.com/' where the server opens and serves any provided file path. This is due to the fact that the server treating the address as a file path relative to the working directory of the server.
+Local file inclusion on the root endpoint 'https://bfd.quoccabank.com/' present as a relative path injected into the GET requests. This is due to the fact that the web server treats file path inputs as a relative path to the working directory of the webserver.
 
-## Severity : High
+## Severity : Critical
 
 ## Steps to reproduce:
 
@@ -14,7 +14,7 @@ Send the request to repeater and modify the request to this:
 
 ![image-20210708202321219](./images/bfd1.png)
 
-replacing the original `GET /index.html HTTP/1.1` with our custom payload  `GET /../etc/passwd HTTP/1.1`
+Replacing the original `GET /index.html HTTP/1.1` with our custom payload  `GET /../etc/passwd HTTP/1.1`.
 
 The response will be this:
 
@@ -33,3 +33,4 @@ As this comment on 'https://github.com/ajyoon/systemf/blob/master/examples/http/
 ![image-20210708203917867](./images/bfd3)
 
 Other mitigations may be to use a non-vulnerable webserver, as well as sanitizing and checking whether or not the routes provided is part of a white listed list of routes.
+

@@ -10,21 +10,19 @@ The 'https://notes.quoccabank.com/' endpoint utilized a JWT token as its primary
 
 Visit "https://notes.quoccabank.com/" and grab the cookie from local storage or from a cookie editing plugin downloaded from your browser app store.
 
-You will be faced with this information
+You will be faced with this information:
 
 ![image-20210708191401772](./images/notes1.png)
 
-Grab the cookie from browser local storage or, in this case 'Editmycookie' (a chrome extension)
+Grab the cookie from browser local storage or, in this case 'Editmycookie' (a chrome extension).
 
 
 
 ![image-20210708192840810](./images/notes2.png)
 
-paste the cookie into JWT.io, and change the payload to the following :
+Paste the cookie into JWT.io, and change the payload to the following :
 
-Username: "admin@quoccabank.com"
-
-exp: "<some valid time in the future>"
+`Username: "admin@quoccabank.com"` `exp: "<some valid time in the future>"`
 
 ![image-20210708193039288](./images/notes3.png)
 

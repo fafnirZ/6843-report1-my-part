@@ -8,7 +8,7 @@ The 'support.quoccabank.com/raw/' endpoint allows for the user to submit support
 
 ## Proof of concepts
 
-this is the bash script that enumerates all the possible ids and page numbers and prints the response code for the user to grep
+This is the bash script that enumerates all the possible ids and page numbers and prints the response code for the user to grep.
 
 ```shell
 #!/bin/sh
@@ -36,11 +36,11 @@ do
 done
 ```
 
-for this endpoint `https://support.quoccabank.com/raw/RVnSH2uR` aka `raw/1125:4` encoded in base58
+For this endpoint `https://support.quoccabank.com/raw/RVnSH2uR` aka `raw/1125:4` encoded in base58
 
 ![image-20210709200443014](./images/support1.png)
 
-similarly `https://support.quoccabank.com/raw/VVBWU75i` aka `raw/9447:1` 
+Similarly `https://support.quoccabank.com/raw/VVBWU75i` aka `raw/9447:1` 
 
 ![image-20210709200651795](./images/support2.png)
 
