@@ -1,6 +1,6 @@
 # XML external entities vulnerability in 'feedifier.quoccabank.com' leading to local file inclusion
 
-## Severity : High
+## Severity : Critical
 
 ## Report summary:
 
@@ -91,7 +91,7 @@ External dtd file
 
 ### v3.feedifier
 
-v3's exploit is basically identical to v2 with some changes in the dtd file
+v3's exploit is basically identical to v2 with some changes in the DTD file
 
 ```html
 <!ENTITY % beg "<![CDATA[">
@@ -104,4 +104,12 @@ v3's exploit is basically identical to v2 with some changes in the dtd file
 
 <!ENTITY % bundle "<!ENTITY atak '%beg;%d;%end;'>">
 ```
+
+## Impacts and Attack scenarios
+
+Since the attacker is able to gain local file inclusion in the server, thereby obtaining a foothold onto the server, they are able to freely roam and obtain methods of entering the server by means such as viewing SSH keys, Flask secret keys, other server secrets as well as open up other attack vectors such as server side request forgery ultimately leading to Remote Code Execution on the server. Therefore this vulnerability is categorized as a critical vulnerability since local file inclusion vulnerabilities are easily escalated into RCEs.
+
+## Mitigations
+
+Mitigations to XXE vulnerabilities include disabling external entities features such as the DTD and XML external entity features. Furthermore XML processors and other dependencies must be regularly updated to be protect the server against old patched vulnerabilities.
 
